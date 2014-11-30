@@ -1,4 +1,4 @@
-package relaxtime.model;
+package relaxtime.lib.model;
 
 import java.util.Date;
 

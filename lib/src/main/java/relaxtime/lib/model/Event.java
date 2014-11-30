@@ -1,4 +1,4 @@
-package relaxtime.model;
+package relaxtime.lib.model;
 
 /**
  * @author Maxim
