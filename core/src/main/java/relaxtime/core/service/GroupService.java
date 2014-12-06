@@ -12,7 +12,6 @@ import java.util.List;
 @Service
 public class GroupService {
     public List<Group> combineNewGroups() {
-
         return null;
     }
 }

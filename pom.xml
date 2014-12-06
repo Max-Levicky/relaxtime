@@ -2,16 +2,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
 
     <groupId>relaxtime</groupId>
-    <artifactId>relaxtime</artifactId>
+    <artifactId>parent</artifactId>
     <packaging>pom</packaging>
     <version>${relaxVersion}</version>
+
+    <modelVersion>4.0.0</modelVersion>
+
     <modules>
+        <module>lib</module>
         <module>server</module>
         <module>core</module>
-        <module>lib</module>
     </modules>
     <properties>
         <relaxVersion>0.0.1</relaxVersion>
@@ -27,11 +29,11 @@
             <version>4.12-beta-3</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>relaxtime</groupId>
-            <artifactId>lib</artifactId>
-            <version>${relaxVersion}</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>relaxtime</groupId>-->
+            <!--<artifactId>lib</artifactId>-->
+            <!--<version>${relaxVersion}</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
