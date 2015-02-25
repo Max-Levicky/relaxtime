@@ -12,6 +12,16 @@ public class RelaxMethod {
     private int neededTime;
     private Range<Integer> placesRange;
 
+    public RelaxMethod() {
+    }
+
+    public RelaxMethod(String name, String place, int neededTime, Range<Integer> placesRange) {
+        this.name = name;
+        this.place = place;
+        this.neededTime = neededTime;
+        this.placesRange = placesRange;
+    }
+
     public String getName() {
         return name;
     }

@@ -3,23 +3,15 @@ package relaxtime.lib.model;
 /**
  * @author Maxim
  */
-public abstract class Event {
-    private int id;
-    private Employee targetEmployee;
+public abstract class Event extends MongoModel {
+    private User targetUser;
 
-    public Employee getTargetEmployee() {
-        return targetEmployee;
+    public User getTargetUser() {
+        return targetUser;
     }
 
-    public void setTargetEmployee(Employee targetEmployee) {
-        this.targetEmployee = targetEmployee;
+    public void setTargetUser(User targetUser) {
+        this.targetUser = targetUser;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 }

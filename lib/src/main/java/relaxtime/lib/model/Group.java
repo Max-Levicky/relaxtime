@@ -7,15 +7,23 @@ import java.util.List;
  * @date $ {DATE}.
  */
 public class Group {
-    private List<Employee> employees;
+    private List<User> users;
     private RelaxMethod relaxMethod;
 
-    public List<Employee> getEmployees() {
-        return employees;
+    public Group() {
     }
 
-    public void setEmployees(List<Employee> employees) {
-        this.employees = employees;
+    public Group(List<User> users, RelaxMethod relaxMethod) {
+        this.users = users;
+        this.relaxMethod = relaxMethod;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 
     public RelaxMethod getRelaxMethod() {

@@ -6,7 +6,7 @@
     <groupId>relaxtime</groupId>
     <artifactId>parent</artifactId>
     <packaging>pom</packaging>
-    <version>${relaxVersion}</version>
+    <version>${relax.version}</version>
 
     <modelVersion>4.0.0</modelVersion>
 
@@ -14,10 +14,12 @@
         <module>lib</module>
         <module>server</module>
         <module>core</module>
+        <module>baseClient</module>
+        <module>webclient</module>
     </modules>
     <properties>
-        <relaxVersion>0.0.1</relaxVersion>
-        <springVersion>4.1.1.RELEASE</springVersion>
+        <spring.version>4.0.8.RELEASE</spring.version>
+        <relax.version>0.0.1</relax.version>
         <activemqVersion>5.10.0</activemqVersion>
         <guavaVersion>18.0</guavaVersion>
     </properties>
@@ -29,11 +31,6 @@
             <version>4.12-beta-3</version>
             <scope>test</scope>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>relaxtime</groupId>-->
-            <!--<artifactId>lib</artifactId>-->
-            <!--<version>${relaxVersion}</version>-->
-        <!--</dependency>-->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
@@ -44,5 +41,17 @@
             <artifactId>guava-collections</artifactId>
             <version>r03</version>
         </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.7</version>
+        </dependency>
     </dependencies>
+    <repositories>
+        <repository>
+            <id>repository.springsource.release</id>
+            <name>SpringSource GA Repository</name>
+            <url>http://repo.springsource.org/release</url>
+        </repository>
+    </repositories>
 </project>

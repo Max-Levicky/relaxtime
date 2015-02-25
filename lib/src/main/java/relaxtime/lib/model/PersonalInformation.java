@@ -7,9 +7,28 @@ import java.util.Date;
  * @date $ {DATE}.
  */
 public class PersonalInformation {
+    private int id;
     private String firstName;
     private String secondName;
     private Date birthday;
+
+    public PersonalInformation() {
+    }
+
+    public PersonalInformation(int id, String firstName, String secondName, Date birthday) {
+        this.id = id;
+        this.firstName = firstName;
+        this.secondName = secondName;
+        this.birthday = birthday;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getFirstName() {
         return firstName;
