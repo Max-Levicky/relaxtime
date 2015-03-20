@@ -5,15 +5,13 @@
     <parent>
         <artifactId>parent</artifactId>
         <groupId>relaxtime</groupId>
-        <version>${relax.version}</version>
+        <version>0.0.1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <properties>
         <!--<spring.version>4.0.8.RELEASE</spring.version>-->
         <javax.servlet>3.1.0</javax.servlet>
         <jackson.version>2.4.3</jackson.version>
-        <mongojavadriver.version>2.12.4</mongojavadriver.version>
-        <springdata.version>1.6.1.RELEASE</springdata.version>
         <springsecurity.version>3.2.1.RELEASE</springsecurity.version>
     </properties>
 
@@ -22,7 +20,7 @@
         <dependency>
             <groupId>relaxtime</groupId>
             <artifactId>lib</artifactId>
-            <version>${relax.version}</version>
+            <version>0.0.1</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -60,26 +58,6 @@
             <artifactId>spring-security-web</artifactId>
             <version>${springsecurity.version}</version>
         </dependency>
-        <!-- need this for @Configuration -->
-        <dependency>
-            <groupId>cglib</groupId>
-            <artifactId>cglib</artifactId>
-            <version>2.2.2</version>
-        </dependency>
 
-        <!-- Spring Data for MongoDB -->
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-mongodb</artifactId>
-            <version>${springdata.version}</version>
-        </dependency>
-
-        <!-- Java MongoDB Driver -->
-        <dependency>
-            <groupId>org.mongodb</groupId>
-            <artifactId>mongo-java-driver</artifactId>
-            <version>${mongojavadriver.version}</version>
-        </dependency>
     </dependencies>
-
 </project>

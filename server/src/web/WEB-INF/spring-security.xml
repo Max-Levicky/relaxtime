@@ -13,14 +13,14 @@
           use-expressions="true"
           access-decision-manager-ref="accessDecisionManager"
           create-session="stateless">
-        <form-login login-page="http://${url.base}/login/" default-target-url="/"
-                    authentication-failure-url="http://${url.base}/login?error=true"/>
+        <!--<form-login login-page="http://${url.base}/login/" default-target-url="/"-->
+                    <!--authentication-failure-url="http://${url.base}/login?error=true"/>-->
         <logout logout-url="/logout" logout-success-url="/"/>
         <anonymous username="guest" granted-authority="ROLE_ANONYMOUS"/>
         <remember-me user-service-ref="userService" />
     </http>
 
-    <beans:bean class="com.example.rest.security.CustomTokenAuthenticationFilter" id="authenticationTokenProcessingFilter">
+    <beans:bean class="relaxtime.api.security.TokenAuthenticationFilter" id="authenticationTokenProcessingFilter">
         <beans:constructor-arg type="java.lang.String" value="/rest/**"/>
         <beans:constructor-arg
                 type="org.springframework.security.authentication.AuthenticationManager" ref="authManager">
@@ -29,7 +29,7 @@
 
     <global-method-security secured-annotations="enabled"/>
 
-    <authentication-manager>
+    <authentication-manager id="authManager">
         <authentication-provider user-service-ref="userService"/>
     </authentication-manager>
 

@@ -1,4 +1,4 @@
-package relaxtime.api.exception;
+package relaxtime.lib.exception;
 
 /**
  * @author Maxim

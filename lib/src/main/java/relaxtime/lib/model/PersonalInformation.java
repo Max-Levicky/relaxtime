@@ -1,11 +1,14 @@
 package relaxtime.lib.model;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.Date;
 
 /**
  * @author Maxim
  * @date $ {DATE}.
  */
+@Document(collection = "personalInformation")
 public class PersonalInformation {
     private int id;
     private String firstName;

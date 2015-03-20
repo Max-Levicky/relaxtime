@@ -1,17 +1,14 @@
 package relaxtime.api.controller;
 
-import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import relaxtime.api.model.ApiResponse;
-import relaxtime.api.service.UserService;
+import relaxtime.lib.service.UserService;
 import relaxtime.lib.model.Event;
-import relaxtime.lib.model.PlanedRelaxEvent;
-import relaxtime.api.service.EventService;
-import relaxtime.lib.model.PlanedRelaxEvent.EmployeeRelaxStatus;
+import relaxtime.lib.service.EventService;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package relaxtime.api.dao;
+package relaxtime.lib.dao;
 
 import com.google.common.util.concurrent.Striped;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,9 +7,9 @@ import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
-import relaxtime.api.model.SequenceId;
-import relaxtime.lib.model.Event;
+import relaxtime.lib.model.MongoFilter;
 import relaxtime.lib.model.MongoModel;
+import relaxtime.lib.model.SequenceId;
 
 import java.util.concurrent.locks.Lock;
 

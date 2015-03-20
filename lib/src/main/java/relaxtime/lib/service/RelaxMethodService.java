@@ -1,4 +1,4 @@
-package relaxtime.api.service;
+package relaxtime.lib.service;
 
 /**
  * @author Maxim

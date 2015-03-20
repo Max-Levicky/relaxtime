@@ -6,20 +6,21 @@ import com.google.common.collect.Range;
  * @author Maxim
  * @date $ {DATE}.
  */
-public class RelaxMethod {
+public class Activity extends MongoModel {
     private String name;
     private String place;
     private int neededTime;
-    private Range<Integer> placesRange;
+    private Range<Integer> personsRange;
+    private boolean buzy;
 
-    public RelaxMethod() {
+    public Activity() {
     }
 
-    public RelaxMethod(String name, String place, int neededTime, Range<Integer> placesRange) {
+    public Activity(String name, String place, int neededTime, Range<Integer> personsRange) {
         this.name = name;
         this.place = place;
         this.neededTime = neededTime;
-        this.placesRange = placesRange;
+        this.personsRange = personsRange;
     }
 
     public String getName() {
@@ -46,11 +47,19 @@ public class RelaxMethod {
         this.neededTime = neededTime;
     }
 
-    public Range<Integer> getPlacesRange() {
-        return placesRange;
+    public Range<Integer> getPersonsRange() {
+        return personsRange;
     }
 
-    public void setPlacesRange(Range<Integer> placesRange) {
-        this.placesRange = placesRange;
+    public void setPersonsRange(Range<Integer> personsRange) {
+        this.personsRange = personsRange;
+    }
+
+    public boolean isBuzy() {
+        return buzy;
+    }
+
+    public void setBuzy(boolean buzy) {
+        this.buzy = buzy;
     }
 }

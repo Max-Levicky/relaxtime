@@ -1,4 +1,4 @@
-package relaxtime.api.dao;
+package relaxtime.lib.dao;
 
 /**
  * @author Maxim

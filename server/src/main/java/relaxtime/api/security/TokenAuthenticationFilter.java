@@ -24,15 +24,15 @@ public class TokenAuthenticationFilter extends AbstractAuthenticationProcessingF
 
     private AuthenticationManager authenticationManager;
 
-    @Autowired
-    private CryptService cryptService; //service which can decrypt token
+//    @Autowired
+//    private CryptService cryptService; //service which can decrypt token
 
     public TokenAuthenticationFilter(String defaultFilterProcessesUrl, AuthenticationManager authenticationManager) {
         super(defaultFilterProcessesUrl);
         this.authenticationManager = authenticationManager;
         super.setRequiresAuthenticationRequestMatcher(new AntPathRequestMatcher(defaultFilterProcessesUrl));
-        setAuthenticationManager(new NoOpAuthenticationManager());
-        setAuthenticationSuccessHandler(new TokenSimpleUrlAuthenticationSuccessHandler());
+//        setAuthenticationManager(new NoOpAuthenticationManager());
+//        setAuthenticationSuccessHandler(new TokenSimpleUrlAuthenticationSuccessHandler());
     }
 
     public final String HEADER_SECURITY_TOKEN = "My-Rest-Token";
@@ -56,13 +56,14 @@ public class TokenAuthenticationFilter extends AbstractAuthenticationProcessingF
     // This method makes some validation depend on your application logic
     private Authentication parseToken(String tokenString) {
         try {
-            String encryptedToken = cryptService.decrypt(tokenString);
+            String encryptedToken = tokenString;
+//            String encryptedToken = cryptService.decrypt(tokenString);
             Token token = new ObjectMapper().readValue(encryptedToken, Token.class);
             return authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(token.getUsername(), token.getPassword()));
         } catch (Exception e) {
             return null;
         }
-        return null;
+//        return null;
     }
 }

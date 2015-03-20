@@ -1,12 +1,12 @@
-package relaxtime.api.service;
+package relaxtime.lib.service;
 
-import com.sun.istack.internal.NotNull;
-import relaxtime.api.exception.CrudServiceException;
-import relaxtime.api.exception.ItemNotFoundException;
+import relaxtime.lib.exception.CrudServiceException;
+import relaxtime.lib.exception.ItemNotFoundException;
 import relaxtime.lib.model.Department;
-import relaxtime.api.util.Filter;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
+import java.util.logging.Filter;
 
 /**
  * @author Maxim

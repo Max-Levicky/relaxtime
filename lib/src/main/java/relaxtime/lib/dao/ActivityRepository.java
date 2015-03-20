@@ -1,11 +1,14 @@
-package relaxtime.api.dao;
+package relaxtime.lib.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
-import relaxtime.lib.model.Event;
+import relaxtime.lib.model.Activity;
+import relaxtime.lib.model.User;
 
 import java.util.List;
 
@@ -14,17 +17,16 @@ import java.util.List;
  * @date $ {DATE}.
  */
 @Repository
-public class EventRepository extends MongoRepository implements IEventRepository {
+public class ActivityRepository extends MongoRepository<Activity> {
     @Autowired
-    private MongoOperations mongoOperation;
+    private MongoOperations mongoOperations;
 
-    public List<Event> getUserEvents(Long userId) {
-        Query query = new Query(Criteria.where("userId").is(userId));
-        return mongoOperation.find(query, Event.class);
+    public List<Activity> getFreeActivities() {
+        mongoOperations
     }
 
     @Override
     protected String getSeqName() {
-        return EventRepository.class.getName();
+        return ActivityRepository.class.getName();
     }
 }

@@ -8,14 +8,14 @@ import java.util.List;
  */
 public class Group {
     private List<User> users;
-    private RelaxMethod relaxMethod;
+    private Activity activity;
 
     public Group() {
     }
 
-    public Group(List<User> users, RelaxMethod relaxMethod) {
+    public Group(List<User> users, Activity activity) {
         this.users = users;
-        this.relaxMethod = relaxMethod;
+        this.activity = activity;
     }
 
     public List<User> getUsers() {
@@ -26,11 +26,11 @@ public class Group {
         this.users = users;
     }
 
-    public RelaxMethod getRelaxMethod() {
-        return relaxMethod;
+    public Activity getActivity() {
+        return activity;
     }
 
-    public void setRelaxMethod(RelaxMethod relaxMethod) {
-        this.relaxMethod = relaxMethod;
+    public void setActivity(Activity activity) {
+        this.activity = activity;
     }
 }

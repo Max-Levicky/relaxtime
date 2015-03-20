@@ -10,7 +10,7 @@ import java.util.HashMap;
  * @date $ {DATE}.
  */
 @Document(collection = "event")
-public class PlanedRelaxEvent extends Event {
+public class ActivityEvent extends Event {
     private Group group;
     private HashMap<User, EmployeeRelaxStatus> readyStatuses;
     public static enum EmployeeRelaxStatus { ACCEPT, DECLINE, UNKNOWN; }
