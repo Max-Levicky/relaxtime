@@ -1,17 +1,19 @@
 package relaxtime.lib.model;
 
 import com.google.common.collect.Range;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * @author Maxim
  * @date $ {DATE}.
  */
+@Document(collection = "activity")
 public class Activity extends MongoModel {
     private String name;
     private String place;
     private int neededTime;
     private Range<Integer> personsRange;
-    private boolean buzy;
+    private boolean busy;
 
     public Activity() {
     }
@@ -55,11 +57,11 @@ public class Activity extends MongoModel {
         this.personsRange = personsRange;
     }
 
-    public boolean isBuzy() {
-        return buzy;
+    public boolean isBusy() {
+        return busy;
     }
 
-    public void setBuzy(boolean buzy) {
-        this.buzy = buzy;
+    public void setBusy(boolean busy) {
+        this.busy = busy;
     }
 }

@@ -33,17 +33,16 @@ abstract public class MongoRepository<T extends MongoModel> {
         String seqName = getSeqName();
         Lock lock = locks.get(seqName);
         try {
-            lock.lock();
+            lock.tryLock();
 
-            Query query = new Query(Criteria.where("_id").is(seqName));
+            Query query = new Query(Criteria.where("id").is(seqName));
 
             //increase sequence id by 1
             Update update = new Update();
             update.inc("seq", 1);
 
             //return new increased id
-            FindAndModifyOptions options = new FindAndModifyOptions();
-            options.returnNew(true);
+            FindAndModifyOptions options = FindAndModifyOptions.options().returnNew(true);
 
             //this is the magic happened.
             SequenceId seqId = mongoOperations.findAndModify(query, update, options, SequenceId.class);
@@ -51,7 +50,7 @@ abstract public class MongoRepository<T extends MongoModel> {
             //if no id, throws SequenceException
             //optional, just a way to tell user when the sequence id is failed to generate.
             if (seqId == null) {
-                throw new RuntimeException("Unable to get sequence id for key : " + seqName);
+                throw new RuntimeException("Unable to get sequence id for key: " + seqName);
             }
 
             return seqId.getSeq();

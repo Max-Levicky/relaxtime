@@ -1,20 +1,17 @@
 package relaxtime.lib.model;
 
-import javax.persistence.Id;
-
 /**
  * @author Maxim
  * @date $ {DATE}.
  */
 public class MongoModel {
-    @Id
-    private long id;
+    private long seqId;
     public long getId() {
-        return id;
+        return seqId;
     }
 
     public void setId(long id) {
-        this.id = id;
+        this.seqId = id;
     }
 
 }

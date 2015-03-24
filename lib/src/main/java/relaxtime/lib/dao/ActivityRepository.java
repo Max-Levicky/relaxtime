@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 import relaxtime.lib.model.Activity;
+import relaxtime.lib.model.Event;
 import relaxtime.lib.model.User;
 
 import java.util.List;
@@ -21,8 +22,9 @@ public class ActivityRepository extends MongoRepository<Activity> {
     @Autowired
     private MongoOperations mongoOperations;
 
-    public List<Activity> getFreeActivities() {
-        mongoOperations
+    public List<Activity> getAvailableActivities(List<User> users) {
+        Query query = new Query(Criteria.where("busy").is(false));
+        return mongoOperations.find(query, Activity.class);
     }
 
     @Override
