@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <title>Своевременный отдых</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,152 +10,267 @@
     <!-- Le styles -->
     <link href="../css/bootstrap.css" rel="stylesheet">
     <style type="text/css">
-      body {
-        padding-top: 40px;
-        padding-bottom: 40px;
-        background-color: #f5f5f5;
-      }
-	  .to-hide, #list {
-		text-align: left;
-	  }
-      .form-signin {
-		text-align: center;
-        max-width: 500px;
-        padding: 19px 29px 29px;
-        margin: 0 auto 20px;
-        background-color: #fff;
-        border: 1px solid #e5e5e5;
-        -webkit-border-radius: 5px;
-           -moz-border-radius: 5px;
-                border-radius: 5px;
-        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-                box-shadow: 0 1px 2px rgba(0,0,0,.05);
-      }
-      .form-signin .form-signin-heading,
-      .form-signin .checkbox {
-        margin-bottom: 10px;
-      }
-      .form-signin input[type="text"],
-      .form-signin input[type="password"] {
-        font-size: 16px;
-        height: auto;
-        margin-bottom: 15px;
-        padding: 7px 9px;
-      }
+        body {
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-color: #f5f5f5;
+        }
+
+        .to-hide, #list {
+            text-align: left;
+        }
+
+        .form-signin {
+            text-align: center;
+            max-width: 500px;
+            padding: 19px 29px 29px;
+            margin: 0 auto 20px;
+            background-color: #fff;
+            border: 1px solid #e5e5e5;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+            -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+        }
+
+        .form-signin .form-signin-heading,
+        .form-signin .checkbox {
+            margin-bottom: 10px;
+        }
+
+        .form-signin input[type="text"],
+        .form-signin input[type="password"] {
+            font-size: 16px;
+            height: auto;
+            margin-bottom: 15px;
+            padding: 7px 9px;
+        }
+        #gone {
+            margin-top: 10px;
+        }
 
     </style>
     <link href="../css/bootstrap-responsive.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
     <!-- Fav and touch icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../ico/apple-touch-icon-114-precomposed.png">
-      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../ico/apple-touch-icon-72-precomposed.png">
-                    <link rel="apple-touch-icon-precomposed" href="../ico/apple-touch-icon-57-precomposed.png">
-                                   <link rel="shortcut icon" href="../ico/favicon.png">
-  </head>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="../ico/favicon.png">
+</head>
 
-  <body>
+<body>
 
-    <div class="container">
+<div class="container">
 
-      <form class="form-signin" method="post" action="logged.html">
-	  <div id="main-form">
-			<h2 class="form-signin-heading" id="main-h2">Я сейчас буду работать</h2>
-			<!--p>Логин:</p-->
-			<div id="to-hide">
-				<input type="text" class="input-block-level" placeholder="Email" id="email" name="auth">
-				<!--input type="password" class="input-block-level" placeholder="Password">
-				<label class="checkbox">
-				  <input type="checkbox" value="remember-me"> Remember me
-				</label-->
-				<div class="btn btn-large btn-primary" type="submit" id="start">Начать отсчёт</div>
-			</div>
-			<div class="alert alert-error" style="display: none;" id="service-msg">
-			  <!--strong>Внимание!</strong> Не удалось установить соединение с сервером. Попробуйте позднее.-->
-			</div>
-			<ul id="list" class="form-signin" style="display: none;">
-			
-			</ul>
-		</div>
-      </form>
-    </div> <!-- /container -->
+    <form class="form-signin relaxApp" method="post" action="logged.html">
+        <h2 class="form-signin-heading" id="main-h2">Я сейчас буду работать</h2>
+        <div class="steps authForm">
+            <input type="text" class="input-block-level" placeholder="Email" id="email" name="auth" value="max.levicky@gmail.com">
+            <div class="btn btn-large btn-primary start-button" type="submit" id="start">Начать отсчёт</div>
+        </div>
+        <div class="steps WORKING">
 
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <!--script src="../js/jquery.js"></script>
-    <script src="../js/bootstrap-transition.js"></script>
-    <script src="../js/bootstrap-alert.js"></script>
-    <script src="../js/bootstrap-modal.js"></script>
-    <script src="../js/bootstrap-dropdown.js"></script>
-    <script src="../js/bootstrap-scrollspy.js"></script>
-    <script src="../js/bootstrap-tab.js"></script>
-    <script src="../js/bootstrap-tooltip.js"></script>
-    <script src="../js/bootstrap-popover.js"></script>
-    <script src="../js/bootstrap-button.js"></script>
-    <script src="../js/bootstrap-collapse.js"></script>
-    <script src="../js/bootstrap-carousel.js"></script>
-    <script src="../js/bootstrap-typeahead.js"></script-->
-	
-    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-	<script>
-	$(document).ready( function() {
-			//var button = document.getElementById("start");
-			function showMsg(msg, type) {
-				var service_msg=document.getElementById("service-msg");
-				service_msg.innerHTML=msg;
-				service_msg.setAttribute("class","alert alert-"+type);
-				service_msg.setAttribute("style","display: block; margin-top: 29px");
-			}
-			function writeUserList(userList) {
-				for (var i=0;i<userList.length;i++) {
-					$("#list").append("<li>"+userList[i].email+"</li>");
-				}
-			}
-			//button.onclick = function() {
-			$("#start").click(function() {
-			//var email = document.getElementById("email").value;
-				showMsg("Отсчёт пошёл", "success");
-				
-				var ajax = $.ajax({
-					url: "http://77.88.37.222:8080/event",
-					type: "GET",
-					dataType: "json",
-					data: {
-						email: "test@test.com"
-					},
-					//data: "email=test@test.com",
-					//timeout: 1080,
-					success: function(data){
-						//alert("success"+data);
-						console.log(data);
-				document.getElementById("main-h2").innerHTML="Пора сделать перерыв";
-				showMsg("Сходи на перерыв с коллегами:", "success");
-				document.getElementById("to-hide").setAttribute("style","display: none");
-						for (var i=0;i<data.length;i++) {
-							writeUserList(data[i].group.users);
-							$("#list").css("display", "block");
-							/*for (var j=0; j<data[i].group.users.length; j++) {
-								console.log(data[i].group.users[j].email);
-							}*/
-							//console.log(data[i].email);
-						}
-					},
-					error: function(XMLHttpRequest, textStatus, errorThrown){
-						alert("error "+textStatus);
-					}
-				});
-			});
-			//.complete()
-			//.error()
-	});
-	</script>
+        </div>
+        <div class="steps RELAX">
 
-  </body>
+        </div>
+        <div class="steps AFTER_WORK">
+
+        </div>
+        <div class="steps LUNCH">
+
+        </div>
+        <div class="steps feedback" style="display: none;">
+            <input type="button" class="like btn btn-large btn-primary start-button" value="Лайк!" />
+            <input type="button" class="dislike btn btn-large btn-primary start-button" value="Дизлайк!" />
+        </div>
+        <div id="main-form">
+            <!--<h2 class="form-signin-heading" id="main-h2">Я сейчас буду работать</h2>-->
+
+            <div id="to-hide">
+                <!--<input type="text" class="input-block-level" placeholder="Email" id="email" name="auth">-->
+                <!--input type="password" class="input-block-level" placeholder="Password">
+                <label class="checkbox">
+                  <input type="checkbox" value="remember-me"> Remember me
+                </label-->
+                <!--<div class="btn btn-large btn-primary start-button" type="submit" id="start">Начать отсчёт</div>-->
+            </div>
+            <div class="alert alert-error" style="display: none;" id="service-msg">
+            </div>
+            <div class="form-signin" style="display: none;" id="parameters">
+                <p id="where">Куда: </p>
+
+                <p id="what">Что делать: <span class="activitiName"></span></p>
+
+                <p id="who">С кем: </p>
+                <ul id="list" style="display: none;">
+                </ul>
+                <div id="map" style="max-width: 500px; height: 400px; display: none"></div>
+                <div class="btn btn-large btn-primary" type="submit" id="gone">Ушёл</div>
+
+            </div>
+            <div class="btn btn-large btn-primary start-button" style="display: none" id="work-again">
+
+            </div>
+        </div>
+    </form>
+</div>
+<!-- /container -->
+
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+<script>
+    function showStep(stepName) {
+        $('.steps').hide();
+        $('.'+stepName).show();
+    }
+    function showMsg(msg, type) {
+        var service_msg = document.getElementById("service-msg");
+        service_msg.innerHTML = msg;
+        service_msg.setAttribute("class", type);
+        service_msg.setAttribute("style", "display: block; margin-top: 29px");
+    }
+
+    function writeUserList(userList) {
+        $("#list").html(list);
+        for (var i = 0; i < userList.length; i++) {
+            $("#list").append("<li>" + userList[i].email + "</li>");
+        }
+    }
+    $(document).ready(function () {
+        showStep("authForm");
+        $('.feedback .like').click(function(){
+            $.ajax({
+                url: "http://77.88.37.222:8080/changeState",
+                method: "POST",
+                data: {
+                    state: 'LUNCH'
+                },
+                success: function() {
+                    $("#main-h2").html("Работаем!");
+                    showMsg("Спасибо за оценку!");
+                }
+            });
+            showStep("WORKING");
+        });
+        $('.feedback .dislike').click(function(){
+            $.ajax({
+                url: "http://77.88.37.222:8080/changeState",
+                method: "POST",
+                data: {
+                    state: 'AFTER_WORK'
+                },
+                success: function() {
+                    $("#main-h2").html("Работаем!");
+                    showMsg("Спасибо за оценку!");
+                }
+            });
+            showStep("WORKING");
+        });
+        var parameters = $("#parameters").html();
+        var list = $("#list").html();
+        var lastEvent = null;
+        var app = {
+            lastEvent: null,
+            getEvents: function () {
+                var data = {
+                    email: $("#email").val()
+                };
+                console.log(app.lastEvent);
+                if (app.lastEvent != null) {
+                    data.lastEvent = app.lastEvent;
+                }
+                $.ajax({
+                    url: "http://77.88.37.222:8080/event",
+                    type: "GET",
+                    dataType: "json",
+                    timeout: 7000,
+                    data: data,
+                    success: function (data) {
+                        if (data.length < 1) {
+                            return;
+                        }
+                        console.log(data);
+                        $("#main-h2").html("Пора сделать перерыв");
+                        showMsg("Сходи на перерыв с коллегами:", "alert alert-success");
+                        $("#parameters").html(parameters);
+                        $("#gone").click(function () {
+                            console.log("sdfsdf");
+                            $("#parameters").css("display", "none");
+                            $("#service-msg").css("display", "none");
+                            $("#main-h2").html("Понравился отдых?");
+                            showStep("feedback");
+                            //showLikes();
+                        });
+                        $("#parameters").css("display", "block");
+                        document.getElementById("to-hide").setAttribute("style", "display: none");
+                        for (var i = 0; i < data.length; i++) {
+                            app.lastEvent = data[i].lastModification;
+                            showStep(data[i].group.activity.type);
+                            if (data[i].group.activity.type == "RELAX") {
+                                $("#where").append(data[i].group.activity.place);
+//                                showMap("теннис");
+                            } else if (data[i].group.activity.type == "LUNCH") {
+                                showMap("кафе, столовая");
+                                //$("#map").css("display", "block");
+                            } else if (data[i].group.activity.type == "AFTER_WORK") {
+                                $("#map").css("display", "block");
+                                showMap("парк");
+                            }
+
+                            $("#what").append(data[i].group.activity.name);
+                            writeUserList(data[i].group.users);
+                            $("#list").css("display", "block");
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        console.log("error " + textStatus);
+                    },
+                    complete: app.getEvents
+                });
+            }
+        };
+        $("#start").click(function () {
+            showMsg("Отсчёт пошёл", "alert alert-success");
+            showStep("RELAX");
+            $("#main-h2").html("Работаем!");
+            var ajax = app.getEvents();
+        });
+        function showMap(keyword) {
+            ymaps.ready(function () {
+                $("#map").css("display", "block");
+                var myMap = new ymaps.Map('map', {
+                    center: [55.74, 37.58],
+                    zoom: 13,
+                    controls: []
+                });
+                var searchControl = new ymaps.control.SearchControl({
+                    options: {
+                        provider: 'yandex#search'
+                    }
+                });
+                myMap.controls.add(searchControl);
+                searchControl.search(keyword);
+            });
+        }
+
+        function showLikes() {
+            console.log("sdfsdf");
+            $("#start").css("display", "block");
+        }
+
+        console.log($("#gone"));
+    });
+</script>
+
+</body>
 </html>

@@ -34,8 +34,8 @@ public class ActivityApp extends App {
         List<User> mostUnrelaxed = userService.getMostUnrelaxed();
         List<User> group = new ArrayList<>();
         for (User user : mostUnrelaxed) {
-            if (true) {
-//            if (random.nextInt(mostUnrelaxed.size()) == 1) {
+//            if (true) {
+            if (random.nextInt(mostUnrelaxed.size()) == 1) {
                 group.add(user);
                 if (group.size() > 1) {
                     break;
@@ -49,13 +49,13 @@ public class ActivityApp extends App {
                 logger.debug("There is no available activity");
                 return;
             }
-            ActivityEvent event = new ActivityEvent();
-            event.setGroup(new Group(group, activities.get(random.nextInt(activities.size()))));
-            event.setTargetUser(group.get(0));
-            eventService.saveEvent(event);
-            event.setId(0);
-            event.setTargetUser(group.get(1));
-            eventService.saveEvent(event);
+            for (User user : group) {
+                user.setRelaxStatus(RelaxStatus.PENDING);
+                ActivityEvent event = new ActivityEvent();
+                event.setGroup(new Group(group, activities.get(random.nextInt(activities.size()))));
+                event.setTargetUser(user);
+                eventService.saveEvent(event);
+            }
         }
     }
 }

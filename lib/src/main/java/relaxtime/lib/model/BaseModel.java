@@ -1,7 +1,10 @@
 package relaxtime.lib.model;
 
+import java.io.Serializable;
+
 /**
- * Created by maxds_000 on 04.04.2015.
+ * @author Max Levicky
  */
-public class BaseModel {
+public abstract class BaseModel implements Serializable {
+    public abstract Long getId();
 }

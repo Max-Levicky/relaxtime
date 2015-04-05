@@ -13,6 +13,7 @@
               <property name="locations">
                      <list>
                             <value>file:${user.home}/relaxtime/main.properties</value>
+                            <value>file:${user.home}/relaxtime/jdbc.properties</value>
                             <!--<value>file:${user.home}/relaxtime/mongo.properties</value>-->
                      </list>
               </property>

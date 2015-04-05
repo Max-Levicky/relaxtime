@@ -2,17 +2,23 @@ package relaxtime.lib.model;
 
 import com.google.common.collect.Range;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * @author Maxim
  * @date $ {DATE}.
  */
-//@Document(collection = "activity")
-public class Activity extends MongoModel {
+@Entity
+public class Activity extends BaseModel {
+    @Id
+    private Long id;
     private String name;
     private String place;
     private int neededTime;
     private Range<Integer> personsRange;
     private boolean busy;
+    private ActivityType type;
 
     public Activity() {
     }
@@ -22,6 +28,15 @@ public class Activity extends MongoModel {
         this.place = place;
         this.neededTime = neededTime;
         this.personsRange = personsRange;
+    }
+
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -62,5 +77,13 @@ public class Activity extends MongoModel {
 
     public void setBusy(boolean busy) {
         this.busy = busy;
+    }
+
+    public ActivityType getType() {
+        return type;
+    }
+
+    public void setType(ActivityType type) {
+        this.type = type;
     }
 }

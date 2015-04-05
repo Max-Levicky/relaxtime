@@ -1,13 +1,12 @@
 package relaxtime.lib.model;
 
 import com.google.common.collect.Lists;
+import org.hibernate.annotations.CollectionOfElements;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -22,6 +21,8 @@ import java.util.List;
 public class User extends BaseModel implements UserDetails {
     @Id
     private Long id;
+    @ElementCollection(targetClass = Role.class)
+    @Enumerated(EnumType.STRING)
     private List<Role> roles = Lists.newArrayList(Role.ANONYMOUS);
 
     private String username;
@@ -29,8 +30,11 @@ public class User extends BaseModel implements UserDetails {
     private String email;
 
     private Date lastRelaxTime;
+    private RelaxStatus relaxStatus;
 
+    @ManyToOne
     private PersonalInformation personalInformation;
+    @ManyToOne
     private Department department;
 
     public static enum Role {
@@ -132,5 +136,13 @@ public class User extends BaseModel implements UserDetails {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public RelaxStatus getRelaxStatus() {
+        return relaxStatus;
+    }
+
+    public void setRelaxStatus(RelaxStatus relaxStatus) {
+        this.relaxStatus = relaxStatus;
     }
 }

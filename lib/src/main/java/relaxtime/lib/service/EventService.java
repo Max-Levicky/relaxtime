@@ -1,5 +1,6 @@
 package relaxtime.lib.service;
 
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import relaxtime.lib.dao.EventRepository;

@@ -1,24 +1,32 @@
 package relaxtime.lib.model;
 
 
+import javax.persistence.*;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Maxim
  * @date $ {DATE}.
  */
 //@Document(collection = "event")
-
+@Entity
 public class ActivityEvent extends Event {
+    @Id
+    private Long id;
+    @ManyToOne
     private Group group;
-    private HashMap<User, EmployeeRelaxStatus> readyStatuses;
-    private String activityName;
-    public static enum EmployeeRelaxStatus { ACCEPT, DECLINE, UNKNOWN; }
+
+    private Date lastModification;
 
     @Override
-//    @Id
-    public long getId() {
-        return super.getId();
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Group getGroup() {
@@ -29,11 +37,11 @@ public class ActivityEvent extends Event {
         this.group = group;
     }
 
-    public HashMap<User, EmployeeRelaxStatus> getReadyStatuses() {
-        return readyStatuses;
+    public Date getLastModification() {
+        return lastModification;
     }
 
-    public void setReadyStatuses(HashMap<User, EmployeeRelaxStatus> readyStatuses) {
-        this.readyStatuses = readyStatuses;
+    public void setLastModification(Date lastModification) {
+        this.lastModification = lastModification;
     }
 }

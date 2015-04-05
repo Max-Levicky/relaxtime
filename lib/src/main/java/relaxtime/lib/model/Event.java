@@ -3,7 +3,7 @@ package relaxtime.lib.model;
 /**
  * @author Maxim
  */
-public abstract class Event extends MongoModel {
+public abstract class Event extends BaseModel {
     private User targetUser;
 
     public User getTargetUser() {

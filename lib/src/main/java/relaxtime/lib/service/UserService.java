@@ -1,14 +1,8 @@
 package relaxtime.lib.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import relaxtime.lib.dao.UserRepository;
 import relaxtime.lib.model.User;
@@ -24,7 +18,11 @@ public class UserService extends BaseService {
     @Autowired
     private UserRepository userRepository;
     public User getByName(String userName) {
-        return userRepository.getCurrentUser(userName);
+        return userRepository.getUserByName(userName);
+    }
+
+    public boolean checkAuth(String login, String password) {
+        return getByName(login) != null;
     }
 
     public User getCurrentUser() {

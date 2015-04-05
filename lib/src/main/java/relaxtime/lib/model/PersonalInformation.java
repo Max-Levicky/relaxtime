@@ -1,14 +1,16 @@
 package relaxtime.lib.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Date;
 
 /**
  * @author Maxim
- * @date $ {DATE}.
  */
-//@Document(collection = "personalInformation")
-public class PersonalInformation {
-    private int id;
+@Entity
+public class PersonalInformation extends BaseModel {
+    @Id
+    private Long id;
     private String firstName;
     private String secondName;
     private Date birthday;
@@ -16,18 +18,18 @@ public class PersonalInformation {
     public PersonalInformation() {
     }
 
-    public PersonalInformation(int id, String firstName, String secondName, Date birthday) {
+    public PersonalInformation(Long id, String firstName, String secondName, Date birthday) {
         this.id = id;
         this.firstName = firstName;
         this.secondName = secondName;
         this.birthday = birthday;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
