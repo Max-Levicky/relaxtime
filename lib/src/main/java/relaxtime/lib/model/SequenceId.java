@@ -1,15 +1,12 @@
 package relaxtime.lib.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
 /**
  * @author Maxim
  * @date $ {DATE}.
  */
-@Document(collection = "sequence")
+//@Document(collection = "sequence")
 public class SequenceId {
-    @Id
+//    @Id
     private String id;
 
     public String getId() {

@@ -1,7 +1,5 @@
 package relaxtime.lib.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.HashMap;
 
@@ -9,14 +7,16 @@ import java.util.HashMap;
  * @author Maxim
  * @date $ {DATE}.
  */
-@Document(collection = "event")
+//@Document(collection = "event")
+
 public class ActivityEvent extends Event {
     private Group group;
     private HashMap<User, EmployeeRelaxStatus> readyStatuses;
+    private String activityName;
     public static enum EmployeeRelaxStatus { ACCEPT, DECLINE, UNKNOWN; }
 
     @Override
-    @Id
+//    @Id
     public long getId() {
         return super.getId();
     }

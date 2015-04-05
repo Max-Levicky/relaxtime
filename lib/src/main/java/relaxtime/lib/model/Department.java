@@ -1,7 +1,5 @@
 package relaxtime.lib.model;
 
-import org.springframework.data.mongodb.core.mapping.Document;
-
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -10,7 +8,7 @@ import javax.persistence.Id;
  * @author Maxim
  * @date $ {DATE}.
  */
-@Document(collection = "department")
+//@Document(collection = "department")
 public class Department {
     @Id
     @GeneratedValue

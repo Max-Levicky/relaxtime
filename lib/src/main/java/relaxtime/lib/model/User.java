@@ -1,11 +1,13 @@
 package relaxtime.lib.model;
 
 import com.google.common.collect.Lists;
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -15,12 +17,16 @@ import java.util.List;
  * @author Maxim
  * @date $ {DATE}.
  */
-@Document(collection = "user")
-public class User extends MongoModel implements UserDetails {
+@Entity
+@Table(name = "users")
+public class User extends BaseModel implements UserDetails {
+    @Id
+    private Long id;
     private List<Role> roles = Lists.newArrayList(Role.ANONYMOUS);
 
     private String username;
     private String password;
+    private String email;
 
     private Date lastRelaxTime;
 
@@ -38,7 +44,7 @@ public class User extends MongoModel implements UserDetails {
         }
     }
 
-    public User(int id, PersonalInformation personalInformation, Department department) {
+    public User(Long id, PersonalInformation personalInformation, Department department) {
         setId(id);
         this.personalInformation = personalInformation;
         this.department = department;
@@ -110,5 +116,21 @@ public class User extends MongoModel implements UserDetails {
     @Override
     public boolean isEnabled() {
         return false;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

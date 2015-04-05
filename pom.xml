@@ -35,7 +35,7 @@
         <activemqVersion>5.10.0</activemqVersion>
         <guavaVersion>18.0</guavaVersion>
         <springdata.version>1.6.1.RELEASE</springdata.version>
-        <mongojavadriver.version>2.12.4</mongojavadriver.version>
+        <!--<mongojavadriver.version>2.12.4</mongojavadriver.version>-->
     </properties>
 
     <dependencies>
@@ -72,17 +72,17 @@
             <version>2.2.2</version>
         </dependency>
         <!-- Spring Data for MongoDB -->
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-mongodb</artifactId>
-            <version>${springdata.version}</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.data</groupId>-->
+            <!--<artifactId>spring-data-mongodb</artifactId>-->
+            <!--<version>${springdata.version}</version>-->
+        <!--</dependency>-->
         <!-- Java MongoDB Driver -->
-        <dependency>
-            <groupId>org.mongodb</groupId>
-            <artifactId>mongo-java-driver</artifactId>
-            <version>${mongojavadriver.version}</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.mongodb</groupId>-->
+            <!--<artifactId>mongo-java-driver</artifactId>-->
+            <!--<version>${mongojavadriver.version}</version>-->
+        <!--</dependency>-->
     </dependencies>
     <repositories>
         <repository>

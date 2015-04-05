@@ -4,6 +4,14 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
         http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          id="WebApp_ID" version="3.0">
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            <!--classpath*:/relaxtime/spring/*.xml-->
+            /src/web/WEB-INF/applicationContext.xml
+            /src/web/WEB-INF/rest-servlet.xml
+        </param-value>
+    </context-param>
     <!--<filter>-->
         <!--<filter-name>springSecurityFilterChain</filter-name>-->
         <!--<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>-->
@@ -28,6 +36,9 @@
     </listener>
     <listener>
         <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
     </listener>
 
 </web-app>

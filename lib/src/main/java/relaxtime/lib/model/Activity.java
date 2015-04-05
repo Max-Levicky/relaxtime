@@ -1,13 +1,12 @@
 package relaxtime.lib.model;
 
 import com.google.common.collect.Range;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * @author Maxim
  * @date $ {DATE}.
  */
-@Document(collection = "activity")
+//@Document(collection = "activity")
 public class Activity extends MongoModel {
     private String name;
     private String place;

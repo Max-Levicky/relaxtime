@@ -1,11 +1,13 @@
 package relaxtime.lib.model;
 
+import javax.persistence.Entity;
 import java.util.List;
 
 /**
  * @author Maxim
  * @date $ {DATE}.
  */
+@Entity
 public class Group {
     private List<User> users;
     private Activity activity;
