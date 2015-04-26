@@ -27,7 +27,7 @@ public class EventController {
     private static Date lastEventTime = new Date();
     @RequestMapping("/")
     public String root() throws Exception {
-        byte[] encoded = Files.readAllBytes(Paths.get("C:\\Users\\maxds_000\\projects\\relaxtime\\gs-rest-service-master\\complete\\src\\main\\resources\\static\\examples\\hack.html"));
+        byte[] encoded = Files.readAllBytes(Paths.get("C:\\projects\\relaxtime\\gs-rest-service-master\\complete\\src\\main\\resources\\static\\examples\\hack.html"));
         return new String(encoded, "UTF-8");
     }
 

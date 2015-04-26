@@ -1,17 +1,11 @@
 package relaxtime.lib.model;
 
+import javax.persistence.ManyToOne;
+
 /**
  * @author Maxim
  */
 public abstract class Event extends BaseModel {
-    private User targetUser;
-
-    public User getTargetUser() {
-        return targetUser;
-    }
-
-    public void setTargetUser(User targetUser) {
-        this.targetUser = targetUser;
-    }
-
+    abstract public User getTargetUser();
+    abstract public void setTargetUser(User targetUser);
 }

@@ -1,4 +1,4 @@
-package relaxtime.client.web;
+package relaxtime.client.web.controller;
 
 import org.springframework.stereotype.Controller;
 

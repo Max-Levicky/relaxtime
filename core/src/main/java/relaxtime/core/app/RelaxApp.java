@@ -22,9 +22,9 @@ public class RelaxApp extends App {
     private List<Runnable> availableApps = Lists.newArrayList(context.getBean(ActivityApp.class));
     private volatile ConcurrentMap<Class, Date> appsActivities = new ConcurrentHashMap<>();
     private static final ApplicationContext context = new ClassPathXmlApplicationContext(
-            "classpath:relaxtime/spring/main-context.xml",
+            "classpath:relaxtime/spring/main-context-active.xml",
             "classpath:relaxtime/spring/relax-app-context.xml",
-            "classpath:relaxtime/spring/mongo-context.xml"
+            "classpath:relaxtime/spring/hibernate-active.xml"
     );
 
     @Override
@@ -32,7 +32,7 @@ public class RelaxApp extends App {
         getApps().stream().filter(app -> !runningApps.containsKey(app.getClass())).forEach(app -> {
             Thread thread = new Thread(app);
             thread.start();
-            logger.debug("New app started: {}", app.getClass().getName());
+            logger.info("New app started: {}", app.getClass().getName());
             runningApps.put(app.getClass(), thread);
         });
     }

@@ -4,7 +4,6 @@ import com.google.common.util.concurrent.Striped;
 import org.springframework.beans.factory.annotation.Autowired;
 import relaxtime.lib.model.MongoFilter;
 import relaxtime.lib.model.MongoModel;
-import relaxtime.lib.model.SequenceId;
 
 import java.util.concurrent.locks.Lock;
 

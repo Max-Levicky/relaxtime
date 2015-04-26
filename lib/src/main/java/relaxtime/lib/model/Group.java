@@ -1,9 +1,6 @@
 package relaxtime.lib.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -11,6 +8,7 @@ import java.util.List;
  * @date $ {DATE}.
  */
 @Entity
+@Table(name = "groups")
 public class Group {
     @Id
     private Long id;

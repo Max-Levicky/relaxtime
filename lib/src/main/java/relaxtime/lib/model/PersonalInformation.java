@@ -2,12 +2,14 @@ package relaxtime.lib.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
 /**
  * @author Maxim
  */
 @Entity
+@Table(name = "personal_information")
 public class PersonalInformation extends BaseModel {
     @Id
     private Long id;

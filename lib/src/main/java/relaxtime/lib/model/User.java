@@ -1,12 +1,12 @@
 package relaxtime.lib.model;
 
 import com.google.common.collect.Lists;
-import org.hibernate.annotations.CollectionOfElements;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;

@@ -2,13 +2,12 @@ package relaxtime.lib.dao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Expression;
-import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import relaxtime.lib.model.Event;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -16,6 +15,7 @@ import java.util.List;
  * @date $ {DATE}.
  */
 @Repository
+@Transactional
 public class EventRepository extends HibernateRepository<Event> implements IEventRepository {
     @Autowired
     private SessionFactory sessionFactory;
