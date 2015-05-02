@@ -11,6 +11,7 @@ import java.util.List;
 @Table(name = "groups")
 public class Group {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @ManyToMany
     private List<User> users;

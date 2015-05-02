@@ -8,6 +8,7 @@ import relaxtime.lib.model.Activity;
 import relaxtime.lib.model.Event;
 import relaxtime.lib.model.User;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -15,15 +16,12 @@ import java.util.List;
  * @date $ {DATE}.
  */
 @Repository
+@Transactional
 public class ActivityRepository extends HibernateRepository<Activity> {
-//    @Autowired
-//    private MongoOperations mongoOperations;
     @Autowired
     private SessionFactory sessionFactory;
 
     public List<Activity> getAvailableActivities(List<User> users) {
-//        Query query = new Query(Criteria.where("busy").is(false));
-//        return mongoOperations.find(query, Activity.class);
         return null;
     }
 
@@ -32,8 +30,4 @@ public class ActivityRepository extends HibernateRepository<Activity> {
         return sessionFactory.getCurrentSession();
     }
 
-//    @Override
-//    protected String getSeqName() {
-//        return ActivityRepository.class.getName();
-//    }
 }

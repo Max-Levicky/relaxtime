@@ -30,7 +30,7 @@
         <module>webclient</module>
     </modules>
     <properties>
-        <spring.version>4.0.8.RELEASE</spring.version>
+        <spring.version>4.1.6.RELEASE</spring.version>
         <relax.version>0.0.1</relax.version>
         <activemqVersion>5.10.0</activemqVersion>
         <guavaVersion>18.0</guavaVersion>

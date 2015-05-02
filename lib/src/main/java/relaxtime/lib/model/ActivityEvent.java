@@ -14,6 +14,7 @@ import java.util.Map;
 @Table(name = "activity_event")
 public class ActivityEvent extends Event {
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
     @ManyToOne
     private Group group;

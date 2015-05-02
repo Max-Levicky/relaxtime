@@ -18,7 +18,7 @@ import java.util.List;
  * @author Maxim
  */
 @RestController
-@RequestMapping("/event")
+@RequestMapping("/api/event")
 public class EventController extends ApiController {
     @Autowired
     private EventService eventService;

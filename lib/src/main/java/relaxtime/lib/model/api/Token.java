@@ -2,18 +2,26 @@ package relaxtime.lib.model.api;
 
 import relaxtime.lib.model.User;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * @author Max Levicky
  */
 @Entity
-public class Token {
+@Table(name = "tokens")
+@NamedQueries({
+        @NamedQuery(
+                name = Token.FIND_BY_TOKEN,
+                query = "from Token t where t.token = ?"
+        ),
+})
+public class Token implements Serializable {
+    @Id
     private String token;
     @ManyToOne
     private User user;
+    public static final String FIND_BY_TOKEN = "Token.findByToken";
 
     public Token() {
     }
@@ -23,7 +31,6 @@ public class Token {
         this.user = user;
     }
 
-    @Id
     public String getToken() {
         return token;
     }

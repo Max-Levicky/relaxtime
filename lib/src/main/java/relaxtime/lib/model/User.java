@@ -1,16 +1,14 @@
 package relaxtime.lib.model;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author Maxim
@@ -20,33 +18,27 @@ import java.util.List;
 @Table(name = "users")
 public class User extends BaseModel implements UserDetails {
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
-    @ElementCollection(targetClass = Role.class)
-    @Enumerated(EnumType.STRING)
-    private List<Role> roles = Lists.newArrayList(Role.ANONYMOUS);
+
+    private Set<Role> roles = Sets.newHashSet(Role.ANONYMOUS);
 
     private String username;
     private String password;
     private String email;
 
-    private Date lastRelaxTime;
-    private RelaxStatus relaxStatus;
+    private boolean enabled = true;
+    private boolean accountNonLocked = true;
+    private boolean accountNonExpired = true;
+    private boolean credentialsNonExpired = true;
+
+    private Date lastRelaxTime = new Date();
+    private RelaxStatus relaxStatus = RelaxStatus.UNKNOWN;
 
     @ManyToOne
     private PersonalInformation personalInformation;
     @ManyToOne
     private Department department;
-
-    public static enum Role {
-        ANONYMOUS(0), USER(1), EDITOR(2), ADMIN(3);
-        private int roleId;
-        Role(int roleId) {
-            this.roleId = roleId;
-        }
-        public int getRoleId() {
-            return roleId;
-        }
-    }
 
     public User(Long id, PersonalInformation personalInformation, Department department) {
         setId(id);
@@ -88,9 +80,27 @@ public class User extends BaseModel implements UserDetails {
         return auth;
     }
 
+
+    @Column(name = "roles", nullable = false)
+    @ElementCollection(targetClass = Role.class)
+    @CollectionTable(name = "roles", joinColumns = @JoinColumn(name = "roleId"))
+    @JoinTable(name = "roles", joinColumns = @JoinColumn(name = "roleId"))
+    @Enumerated(EnumType.STRING)
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
     @Override
     public String getPassword() {
         return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
@@ -104,22 +114,22 @@ public class User extends BaseModel implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return accountNonExpired;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return accountNonLocked;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return credentialsNonExpired;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return enabled;
     }
 
     public String getEmail() {

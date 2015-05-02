@@ -9,9 +9,10 @@ import org.springframework.stereotype.Repository;
 import relaxtime.lib.model.RelaxStatus;
 import relaxtime.lib.model.User;
 
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.function.Predicate;
 
 /**
  * @author Maxim
@@ -26,8 +27,6 @@ public class UserRepository extends HibernateRepository<User> {
     private static final int UNRELAXED_LIMIT = 10;
 
     public User getUserByName(String name) {
-//        Query query = new Query(Criteria.where("userName").is(name));
-//        return mongoOperations.findOne(query, User.class);
         return (User) getSession().createCriteria(User.class)
                 .add(Restrictions.eq("username", name))
                 .setMaxResults(1)

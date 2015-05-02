@@ -1,11 +1,15 @@
 package relaxtime.api.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 /**
  * @author Maxim
  * @date $ {DATE}.
  */
 public class ApiResponse<T> {
     private ApiResponseStatus status;
+    @JsonInclude(Include.NON_NULL)
     private T data;
 
     public ApiResponse(ApiResponseStatus status, T data) {

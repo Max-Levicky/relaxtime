@@ -8,9 +8,10 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import relaxtime.lib.model.User;
-import relaxtime.lib.service.UserService;
+import relaxtime.lib.service.*;
 
 /**
  * @author Maxim
@@ -20,6 +21,7 @@ import relaxtime.lib.service.UserService;
 public class AuthService implements UserDetailsService, AuthenticationManager {
     @Autowired
     private UserService userService;
+
     @Override
     public User loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userService.getByName(username);

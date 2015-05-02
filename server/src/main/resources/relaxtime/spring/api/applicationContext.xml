@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--suppress SpringSecurityFiltersConfiguredInspection -->
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:websocket="http://www.springframework.org/schema/websocket"
@@ -11,7 +12,11 @@
        </websocket:handlers>
 
        <bean id="myHandler" class="relaxtime.api.controller.SocketHandler"/>
+
+       <context:component-scan base-package="relaxtime.lib.dao" />
        <context:component-scan base-package="relaxtime.lib.service" />
+       <context:component-scan base-package="relaxtime.lib.model" />
+       <context:component-scan base-package="relaxtime.api.filter" />
        <context:component-scan base-package="relaxtime.api.security" />
        <context:component-scan base-package="relaxtime.api.controller" />
 </beans>

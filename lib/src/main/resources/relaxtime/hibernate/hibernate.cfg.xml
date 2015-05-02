@@ -10,5 +10,6 @@
         <mapping class="relaxtime.lib.model.Group"/>
         <mapping class="relaxtime.lib.model.Department"/>
         <mapping class="relaxtime.lib.model.PersonalInformation"/>
+        <mapping class="relaxtime.lib.model.api.Token"/>
     </session-factory>
 </hibernate-configuration>
