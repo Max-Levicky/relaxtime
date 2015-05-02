@@ -27,7 +27,6 @@ public class EventController extends ApiController {
     private UserService userService;
 
     @RequestMapping
-//    @Secured("ROLE_ANONYMOUS")
     public List<Event> getEvents() {
         return eventService.getUserEvents(userService.getCurrentUser().getId());
     }
