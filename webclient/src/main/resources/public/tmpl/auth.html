@@ -1,0 +1,11 @@
+<div class="modal-header">
+    <h3 class="modal-title">Login</h3>
+</div>
+<div class="modal-body">
+    <input type="text" ng-model="auth.login" placeholder="Login" />
+    <input type="text" ng-model="auth.pass" placeholder="Password"/>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="authService.requestNewToken(auth); close()">OK</button>
+    <button class="btn btn-warning" ng-click="close()">Cancel</button>
+</div>

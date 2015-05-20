@@ -3,7 +3,7 @@ package relaxtime.lib.model.api.response;
 /**
  * @author Max Levicky
  */
-public class Response extends IApiResponse implements ApiResponse {
+public class Response extends IApiResponse {
     public Response() {
     }
 

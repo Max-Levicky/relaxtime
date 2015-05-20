@@ -37,4 +37,8 @@ public class TokenService {
         Token savedToken = getToken(token);
         return savedToken == null ? null : savedToken.getUser();
     }
+
+    public void deleteToken(String token) {
+        tokenRepository.delete(tokenRepository.findByToken(token));
+    }
 }

@@ -14,6 +14,7 @@ import relaxtime.lib.service.TokenService;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -23,9 +24,7 @@ import java.io.IOException;
  * @date $ {DATE}.
  */
 public class TokenAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
-
-    private AuthenticationManager authenticationManager;
-
+//    private AuthenticationManager authenticationManager;
     @Autowired
     private TokenService tokenService;
 
@@ -43,12 +42,28 @@ public class TokenAuthenticationFilter extends AbstractAuthenticationProcessingF
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
             throws AuthenticationException, IOException, ServletException {
-        String token = request.getParameter(TOKEN_PARAM_NAME);
+        String token = getToken(request);
         Authentication userAuthenticationToken = checkToken(token);
         if (userAuthenticationToken == null) {
             throw new AuthenticationServiceException("You are not authorized.");
         }
         return userAuthenticationToken;
+    }
+
+    private String getToken(HttpServletRequest request) {
+        String token = request.getParameter(TOKEN_PARAM_NAME);
+        if (Strings.isNullOrEmpty(token)) {
+            return token;
+        }
+//        if (request.getCookies() != null) {
+//            for (Cookie cookie : request.getCookies()) {
+//                if (cookie.getName().equals(TOKEN_PARAM_NAME)) {
+//                    token = cookie.getValue();
+//                    break;
+//                }
+//            }
+//        }
+        return token;
     }
 
     @Override
@@ -60,7 +75,6 @@ public class TokenAuthenticationFilter extends AbstractAuthenticationProcessingF
         chain.doFilter(request, response);
     }
 
-    // This method makes some validation depend on your application logic
     private Authentication checkToken(String tokenString) {
         try {
             if (Strings.isNullOrEmpty(tokenString)) {
@@ -68,7 +82,7 @@ public class TokenAuthenticationFilter extends AbstractAuthenticationProcessingF
             }
             Token token = tokenService.getToken(tokenString);
             if (token == null) {
-                throw new AuthenticationServiceException("You are not authorized.");
+                return null;
             }
             return getAuthenticationManager().authenticate(new UsernamePasswordAuthenticationToken(
                     token.getUser().getUsername(),

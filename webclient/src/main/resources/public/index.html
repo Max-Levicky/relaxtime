@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="relaxApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/flat-ui.min.css" rel="stylesheet" type="text/css" />
+    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
+    <script src="js/flat-ui.min.js"></script>
+    <script src="js/conf.js"></script>
+    <script src="js/app.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav class="navbar navbar-inverse navbar-embossed" role="navigation">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">RelaxTime</a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-collapse-01">
+                    <ul class="nav navbar-nav navbar-right" ng-controller="AuthController">
+                        <li ng-show="isAuth"><a href="#">{{user.username}}</a></li>
+                        <li ng-show="isAuth"><a href="#" ng-click="authService.logout()">Logout</a></li>
+                        <li ng-hide="isAuth"><a ng-click="authService.openLoginWindow()" href="#">Login</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+    </div>
+</body>
+</html>

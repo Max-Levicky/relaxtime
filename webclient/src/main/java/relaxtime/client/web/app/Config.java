@@ -1,8 +1,12 @@
 package relaxtime.client.web.app;
 
+import com.google.common.annotations.Beta;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ImportResource;
+
+import javax.servlet.Filter;
 
 /**
  * @author Maxim

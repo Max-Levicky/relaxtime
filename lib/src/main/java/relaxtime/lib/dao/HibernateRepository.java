@@ -15,4 +15,7 @@ public abstract class HibernateRepository<T extends Serializable> {
     public void save(T model) {
         getSession().save(model);
     }
+    public void delete(T model) {
+        getSession().delete(model);
+    }
 }

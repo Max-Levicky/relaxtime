@@ -1,13 +1,11 @@
 package relaxtime.lib.model;
 
-import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import javax.transaction.Transactional;
 import java.util.*;
 
 /**
@@ -21,7 +19,8 @@ public class User extends BaseModel implements UserDetails {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
-    private Set<Role> roles = Sets.newHashSet(Role.ANONYMOUS);
+    @Enumerated(EnumType.STRING)
+    private Role role = Role.ANONYMOUS;
 
     private String username;
     private String password;
@@ -76,22 +75,30 @@ public class User extends BaseModel implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Collection<GrantedAuthority> auth = new ArrayList<>();
-        roles.forEach((role) -> auth.add(new SimpleGrantedAuthority("ROLE_" + role)));
+//        role.forEach((role) -> auth.add(new SimpleGrantedAuthority("ROLE_" + role)));
+        auth.add(new SimpleGrantedAuthority("ROLE_" + role));
         return auth;
     }
 
+//    @Column(name = "roles", nullable = false)
+//    @ElementCollection(targetClass = Role.class)
+//    @CollectionTable(name = "roles", joinColumns = @JoinColumn(name = "roleId"))
+//    @JoinTable(name = "roles", joinColumns = @JoinColumn(name = "roleId"))
+//    @Enumerated(EnumType.STRING)
+//    public Set<Role> getRole() {
+//        return role;
+//    }
+//
+//    public void setRole(Set<Role> roles) {
+//        this.role = roles;
+//    }
 
-    @Column(name = "roles", nullable = false)
-    @ElementCollection(targetClass = Role.class)
-    @CollectionTable(name = "roles", joinColumns = @JoinColumn(name = "roleId"))
-    @JoinTable(name = "roles", joinColumns = @JoinColumn(name = "roleId"))
-    @Enumerated(EnumType.STRING)
-    public Set<Role> getRoles() {
-        return roles;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     @Override

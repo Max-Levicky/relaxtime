@@ -13,10 +13,10 @@
 
        <bean id="myHandler" class="relaxtime.api.controller.SocketHandler"/>
 
+       <context:component-scan base-package="relaxtime.api.filter" />
        <context:component-scan base-package="relaxtime.lib.dao" />
        <context:component-scan base-package="relaxtime.lib.service" />
        <context:component-scan base-package="relaxtime.lib.model" />
-       <context:component-scan base-package="relaxtime.api.filter" />
        <context:component-scan base-package="relaxtime.api.security" />
        <context:component-scan base-package="relaxtime.api.controller" />
 </beans>
