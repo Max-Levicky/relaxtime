@@ -22,7 +22,8 @@ public class UserService extends BaseService {
     }
 
     public boolean checkAuth(String login, String password) {
-        return getByName(login) != null;
+        User user = getByName(login);
+        return user != null && user.getPassword().equals(password);
     }
 
     public User getCurrentUser() {

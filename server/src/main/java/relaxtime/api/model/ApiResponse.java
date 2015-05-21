@@ -3,12 +3,15 @@ package relaxtime.api.model;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
+import java.util.Date;
+
 /**
  * @author Maxim
  * @date $ {DATE}.
  */
 public class ApiResponse<T> {
     private ApiResponseStatus status;
+    private Date timestamp = new Date();
     @JsonInclude(Include.NON_NULL)
     private T data;
 
@@ -40,5 +43,13 @@ public class ApiResponse<T> {
 
     public void setData(T data) {
         this.data = data;
+    }
+
+    public Date getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
     }
 }

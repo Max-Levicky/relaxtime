@@ -33,7 +33,8 @@ public class AuthController extends ApiController {
             Token token = tokenService.getNewToken(userService.getByName(login));
             return wrapResponse(token.getToken());
         } else {
-            return wrapResponse(ApiStatusCode.UNAUTHORIZED, "Bad credentials.");
+            response.setStatus(ApiStatusCode.UNAUTHORIZED.getCode());
+            return wrapResponse(ApiStatusCode.UNAUTHORIZED, "Wrong username or password.");
         }
     }
 

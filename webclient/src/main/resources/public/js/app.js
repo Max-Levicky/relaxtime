@@ -1,5 +1,5 @@
 "use strict";
-angular.module('relaxApp', ['ui.bootstrap'])
+angular.module('relaxApp', ['ui.bootstrap', 'chieffancypants.loadingBar'])
     .controller('AuthController', function($scope, $rootScope, $http, AuthService, UserService) {
         var authService = new AuthService();
         var userService = new UserService();
@@ -31,16 +31,21 @@ angular.module('relaxApp', ['ui.bootstrap'])
         Auth.prototype.isTokenExists = function() {
             return !!this.getLocalToken();
         };
-        Auth.prototype.requestNewToken = function(auth, callback) {
+        Auth.prototype.requestNewToken = function(auth, callback, errorCallback) {
             $http.get(CONF.authUrl + "?login=" + auth.login + "&pass=" + auth.pass)
                 .success(function(response) {
+                    console.info(response);
                     localStorage[_STORAGE_TOKEN_NAME] = response.data;
-                    console.log(response);
                     if (callback) {
                         callback(response.data);
                     }
                     $rootScope.isAuth = true;
                     new UserService().getUserInfo(response.data);
+                })
+                .error(function(response) {
+                    if (errorCallback) {
+                        errorCallback(response);
+                    }
                 });
         };
         Auth.prototype.logout = function() {
@@ -68,6 +73,9 @@ angular.module('relaxApp', ['ui.bootstrap'])
         $scope.auth = {login: '', pass: ''};
         $scope.close = function () {
             $modalInstance.dismiss();
+        };
+        $scope.error = function(response) {
+            $scope.errorMessage = response.status.message;
         };
     })
 ;

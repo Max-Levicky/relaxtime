@@ -1,11 +1,22 @@
 <div class="modal-header">
     <h3 class="modal-title">Login</h3>
 </div>
-<div class="modal-body">
-    <input type="text" ng-model="auth.login" placeholder="Login" />
-    <input type="text" ng-model="auth.pass" placeholder="Password"/>
-</div>
-<div class="modal-footer">
-    <button class="btn btn-primary" ng-click="authService.requestNewToken(auth); close()">OK</button>
-    <button class="btn btn-warning" ng-click="close()">Cancel</button>
-</div>
+<form name="authForm" ng-submit="authService.requestNewToken(auth, close, error)">
+    <div class="modal-body">
+        <div class="login-form">
+                <div class="form-group" ng-class="{'has-error': authForm.login.$invalid && authForm.login.$dirty}">
+                    <input type="text" required class="form-control" ng-model="auth.login" placeholder="Login" id="login" name="login" autofocus />
+                    <label class="login-field-icon fui-user" for="login"></label>
+                </div>
+                <div class="form-group">
+                    <input type="password" required ng-class="{'has-error': authForm.pass.$invalid && authForm.pass.$dirty}" class="form-control" ng-model="auth.pass" placeholder="Password" id="pass" />
+                    <label class="login-field-icon fui-lock" for="pass"></label>
+                </div>
+                <div ng-show="errorMessage" class="alert alert-danger" role="alert">{{errorMessage}}</div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <input type="submit" class="btn btn-primary" value="OK" />
+        <button class="btn btn-warning" ng-click="close()">Cancel</button>
+    </div>
+</form>
