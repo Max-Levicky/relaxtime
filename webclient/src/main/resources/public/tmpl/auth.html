@@ -1,7 +1,7 @@
 <div class="modal-header">
     <h3 class="modal-title">Login</h3>
 </div>
-<form name="authForm" ng-submit="authService.requestNewToken(auth, close, error)">
+<form name="authForm" ng-submit="userService.requestNewToken(auth, close, error)">
     <div class="modal-body">
         <div class="login-form">
                 <div class="form-group" ng-class="{'has-error': authForm.login.$invalid && authForm.login.$dirty}">

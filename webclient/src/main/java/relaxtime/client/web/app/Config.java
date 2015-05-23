@@ -17,6 +17,7 @@ import javax.servlet.Filter;
         "relaxtime.lib.dao",
         "relaxtime.lib.model",
         "relaxtime.lib.service",
+        "relaxtime.client.web.controller",
 })
 @ImportResource({
         "classpath*:/relaxtime/spring/api/*.xml",
