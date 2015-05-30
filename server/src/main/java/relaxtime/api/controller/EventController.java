@@ -37,10 +37,4 @@ public class EventController extends ApiController {
         return createOkResponse();
     }
 
-    @MessageMapping("/hello")
-    @SendTo("/topic/greetings")
-    public String greeting(String name) throws Exception {
-        Thread.sleep(3000); // simulated delay
-        return "Hello, " + name + "!";
-    }
 }

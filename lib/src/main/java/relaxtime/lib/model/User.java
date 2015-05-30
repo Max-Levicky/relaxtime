@@ -32,6 +32,8 @@ public class User extends BaseModel implements UserDetails {
     private boolean credentialsNonExpired = true;
 
     private Date lastRelaxTime = new Date();
+
+    @Enumerated(EnumType.STRING)
     private RelaxStatus relaxStatus = RelaxStatus.UNKNOWN;
 
     @ManyToOne

@@ -11,6 +11,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
+import org.springframework.web.socket.config.annotation.EnableWebSocket;
+import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
 import relaxtime.api.filter.HeadersFilter;
 
 import javax.servlet.Filter;
@@ -36,11 +38,11 @@ public class Config {
 //                registrationBean.setOrder(1);
 //                return registrationBean;
 //        }
-        @Bean
-        public FilterRegistrationBean securityFilterChain(@Qualifier(AbstractSecurityWebApplicationInitializer.DEFAULT_FILTER_NAME) Filter securityFilter) {
-                FilterRegistrationBean registration = new FilterRegistrationBean(securityFilter);
-                registration.setOrder(10);
-                registration.setName(AbstractSecurityWebApplicationInitializer.DEFAULT_FILTER_NAME);
-                return registration;
-        }
+//        @Bean
+//        public FilterRegistrationBean securityFilterChain(@Qualifier(AbstractSecurityWebApplicationInitializer.DEFAULT_FILTER_NAME) Filter securityFilter) {
+//                FilterRegistrationBean registration = new FilterRegistrationBean(securityFilter);
+//                registration.setOrder(10);
+//                registration.setName(AbstractSecurityWebApplicationInitializer.DEFAULT_FILTER_NAME);
+//                return registration;
+//        }
 }
