@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Entity
 public class Department extends BaseModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private Long id;
     @Column(nullable = false)
     private String name;

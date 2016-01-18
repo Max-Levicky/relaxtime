@@ -27,6 +27,7 @@
     <http auto-config="true">
         <intercept-url pattern="/auth" access="ROLE_ANONYMOUS" />
         <intercept-url pattern="/error/**" access="ROLE_ANONYMOUS" />
+        <intercept-url pattern="/ws" access="ROLE_USER" />
     </http>
 
     <authentication-manager alias="authManager" erase-credentials="false">

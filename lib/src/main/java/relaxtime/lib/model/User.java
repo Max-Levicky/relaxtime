@@ -1,6 +1,5 @@
 package relaxtime.lib.model;
 
-import com.google.common.collect.Sets;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -34,7 +33,7 @@ public class User extends BaseModel implements UserDetails {
     private Date lastRelaxTime = new Date();
 
     @Enumerated(EnumType.STRING)
-    private RelaxStatus relaxStatus = RelaxStatus.UNKNOWN;
+    private RelaxStatus status = RelaxStatus.PAUSED;
 
     @ManyToOne
     private PersonalInformation personalInformation;
@@ -157,11 +156,11 @@ public class User extends BaseModel implements UserDetails {
         this.id = id;
     }
 
-    public RelaxStatus getRelaxStatus() {
-        return relaxStatus;
+    public RelaxStatus getStatus() {
+        return status;
     }
 
-    public void setRelaxStatus(RelaxStatus relaxStatus) {
-        this.relaxStatus = relaxStatus;
+    public void setStatus(RelaxStatus status) {
+        this.status = status;
     }
 }

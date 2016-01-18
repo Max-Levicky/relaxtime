@@ -1,14 +1,20 @@
 'use strict';
 angular.module('relaxApp', ['ui.bootstrap', 'chieffancypants.loadingBar', 'ui.router'])
-    .run(function($rootScope, UserService) {
+    .run(function($rootScope, UserService, WsService) {
+        $rootScope.conf = CONF;
         $rootScope.userService = new UserService();
-        //$rootScope.ws = new WsService();
         if ($rootScope.userService.isTokenExists()) {
             $rootScope.isAuth = true;
-            $rootScope.userService.getUserInfo();
+            $rootScope.userService.getUserInfo(function (user) {
+                $rootScope.ws = new WsService();
+                $rootScope.ws.subscribeOnUserChannel(user);
+            });
         } else {
             $rootScope.isAuth = false;
         }
+    })
+    .config(function($locationProvider) {
+        $locationProvider.html5Mode(true);
     })
     .controller('AuthController', function () {
 
@@ -19,11 +25,12 @@ angular.module('relaxApp', ['ui.bootstrap', 'chieffancypants.loadingBar', 'ui.ro
         // Create a unique callback ID to map requests to responses
         var currentCallbackId = 0;
         // Create our websocket object with the address to the websocket
-        var ws = new WebSocket(CONF.wsUrl);
+        var ws = new SockJS(CONF.wsUrl);
+        var subscribers = {};
 
         var WsService = function() {
             var inst = this;
-            ws.onopen = function(){
+            ws.onopen = function() {
                 console.log("Socket has been opened!");
             };
             ws.onmessage = function(message) {
@@ -42,7 +49,12 @@ angular.module('relaxApp', ['ui.bootstrap', 'chieffancypants.loadingBar', 'ui.ro
             ws.send(JSON.stringify(request));
             return defer.promise;
         };
-
+        WsService.prototype.subscribeOnUserChannel = function(user) {
+            ws.subscribe('/events/' + user.id, function(event) {
+                var handler = subscribers[event.type];
+                handler(event);
+            });
+        };
         WsService.prototype.listener = function(data) {
             var messageObj = data;
             console.log("Received data from websocket: ", messageObj);
@@ -63,7 +75,15 @@ angular.module('relaxApp', ['ui.bootstrap', 'chieffancypants.loadingBar', 'ui.ro
         };
         return WsService;
     })
-    .factory('UserService', function($http, $rootScope, $modal) {
+    .factory('EventService', function($rootScope) {
+        var eventTypes = [];
+        var EventService = function() {};
+        EventService.prototype.listenEvents = function(user) {
+
+        };
+
+    })
+    .factory('UserService', function($http, $rootScope, $modal, $state) {
         var _STORAGE_TOKEN_NAME = 'token';
 
         var UserService = function () {
@@ -114,6 +134,23 @@ angular.module('relaxApp', ['ui.bootstrap', 'chieffancypants.loadingBar', 'ui.ro
                         localStorage.removeItem(_STORAGE_TOKEN_NAME);
                         $rootScope.isAuth = false;
                         $rootScope.user = null;
+                        $state.go('start');
+                    });
+            }
+        };
+        UserService.prototype.startWork = function() {
+            if (this.isTokenExists()) {
+                $http.post(CONF.apiUrl + "user/startWork?token=" + this.getLocalToken())
+                    .success(function(response) {
+                        $rootScope.user = response.data;
+                    });
+            }
+        };
+        UserService.prototype.stopWork = function() {
+            if (this.isTokenExists()) {
+                $http.post(CONF.apiUrl + "user/stopWork?token=" + this.getLocalToken())
+                    .success(function(response) {
+                        $rootScope.user = response.data;
                     });
             }
         };

@@ -1,0 +1,4 @@
+<rule>
+    <from>/**</from>
+    <to>/index.html</to>
+</rule>

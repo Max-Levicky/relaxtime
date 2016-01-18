@@ -1,7 +1,6 @@
 package relaxtime.lib.dao;
 
 import org.hibernate.Session;
-import relaxtime.lib.model.BaseModel;
 
 import javax.transaction.Transactional;
 import java.io.Serializable;
@@ -15,6 +14,11 @@ public abstract class HibernateRepository<T extends Serializable> {
     public void save(T model) {
         getSession().save(model);
     }
+
+    public void update(T model) {
+        getSession().update(model);
+    }
+
     public void delete(T model) {
         getSession().delete(model);
     }

@@ -1,8 +1,6 @@
 package relaxtime.lib.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -12,6 +10,7 @@ import java.util.Date;
 @Table(name = "personal_information")
 public class PersonalInformation extends BaseModel {
     @Id
+    @GeneratedValue
     private Long id;
     private String firstName;
     private String secondName;

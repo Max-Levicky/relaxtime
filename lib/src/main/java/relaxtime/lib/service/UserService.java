@@ -42,4 +42,12 @@ public class UserService extends BaseService {
     public List<User> getMostUnrelaxed() {
         return userRepository.getMostUnrelaxed();
     }
+
+    public void save(User user) {
+        userRepository.save(user);
+    }
+    
+    public void update(User user) {
+        userRepository.update(user);
+    }
 }

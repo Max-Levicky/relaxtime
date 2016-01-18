@@ -9,8 +9,6 @@ import org.springframework.stereotype.Repository;
 import relaxtime.lib.model.RelaxStatus;
 import relaxtime.lib.model.User;
 
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -36,7 +34,7 @@ public class UserRepository extends HibernateRepository<User> {
     @SuppressWarnings("unchecked")
     public List<User> getMostUnrelaxed() {
         return getSession().createCriteria(User.class)
-                .add(Restrictions.eq("relaxStatus", RelaxStatus.WORKING))
+                .add(Restrictions.eq("status", RelaxStatus.WORKING))
                 .addOrder(Order.desc("lastRelaxTime"))
                 .setMaxResults(UNRELAXED_LIMIT)
                 .list();

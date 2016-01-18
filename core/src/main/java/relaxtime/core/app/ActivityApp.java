@@ -1,7 +1,5 @@
 package relaxtime.core.app;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import relaxtime.lib.model.*;
@@ -50,7 +48,7 @@ public class ActivityApp extends App {
                 return;
             }
             for (User user : group) {
-                user.setRelaxStatus(RelaxStatus.PENDING);
+                user.setStatus(RelaxStatus.PENDING);
                 ActivityEvent event = new ActivityEvent();
                 event.setGroup(new Group(group, activities.get(random.nextInt(activities.size()))));
                 event.setTargetUser(user);

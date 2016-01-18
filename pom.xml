@@ -86,5 +86,10 @@
             <name>SpringSource GA Repository</name>
             <url>http://repo.springsource.org/release</url>
         </repository>
+        <repository>
+            <id>JBoss repository</id>
+            <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+        </repository>
     </repositories>
+
 </project>

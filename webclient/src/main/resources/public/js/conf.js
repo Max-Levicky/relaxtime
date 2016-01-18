@@ -1,8 +1,9 @@
 var CONF = {
-    cleanUrl: 'localhost:8080'
+    cleanApiUrl: 'localhost:8080',
+    baseUrl: 'http://localhost:8081'
 };
-CONF.baseUrl = 'http://' + CONF.cleanUrl + '/';
-CONF.apiUrl = CONF.baseUrl + 'api/';
-CONF.authUrl = CONF.baseUrl +'auth/';
-CONF.wsUrl = 'ws://localhost:9081/hello';
-//CONF.wsUrl = 'ws://' + CONF.cleanUrl + '/ws/info';
+CONF.baseApiUrl = 'http://' + CONF.cleanApiUrl + '/';
+CONF.apiUrl = CONF.baseApiUrl + 'api/';
+CONF.authUrl = CONF.baseApiUrl +'auth/';
+//CONF.wsUrl = 'ws://localhost:9081/hello';
+CONF.wsUrl = CONF.baseApiUrl + 'ws';

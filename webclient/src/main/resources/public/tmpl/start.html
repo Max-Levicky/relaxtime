@@ -1,4 +1,7 @@
 <div class="col-md-3">
-    Relax status: {{user.relaxStatus}}
+    Relax status: {{user.status}}
 </div>
-<button ng-click=""></button>
+<button ng-show="user.status == 'PAUSED'" ng-click="$root.userService.startWork()">Start</button>
+<div ng-show="user.status == 'WORKING'">
+    <button ng-click="$root.userService.stopWork()">Stop</button>
+</div>
